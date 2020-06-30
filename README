@@ -63,12 +63,12 @@ a simple bash script and helper to accept incoming ssh traffic using port forwar
 
 + install update-dns.sh to /usr/local/bin
 
-    > cp update-do-dns.sh /usr/local/bin/update-do-dns
+    > cp update-do-ddns.sh /usr/local/bin/update-do-ddns
  
 + set up cron job to keep d-o dns updated, running every 5 minutes (writes to log)
 
 	> crontab -e
 
-	*/5 * * * * /usr/local/bin/update-do-dns >> /Users/me/update-do-dns-log.txt
+	*/5 * * * * /usr/local/bin/update-do-ddns >> /Users/me/log.txt
 
 ** done **
