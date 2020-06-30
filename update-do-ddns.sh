@@ -7,6 +7,7 @@ RECORD_IDS=()
 
 IP=$(curl -s http://checkip.amazonaws.com/)
 
+echo $(date)
 echo "Current Public IP : $IP"
 echo "Updating Digital Ocean DNS record ... "
 
