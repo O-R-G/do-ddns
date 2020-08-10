@@ -71,4 +71,8 @@ a simple bash script and helper to accept incoming ssh traffic using port forwar
 
 	*/5 * * * * /usr/local/bin/update-do-ddns >> /Users/me/log.txt
 
++ set local to run caffeinate.terminal on startup which keeps computer awake
+
+	> caffeinate
+
 ** done **

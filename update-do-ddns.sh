@@ -1,10 +1,10 @@
 #!/bin/sh
 
-# requires ENV variables TOKEN, DOMAIN, ID
-# loaded by .zshrc
+# requires environment vars set in .zshrc
+# export ACCESS_TOKEN=thistoken
+# export DOMAIN=this.com
+# export ID=do_record_id
 
-ACCESS_TOKEN=$TOKEN
-DOMAIN=$DOMAIN
 RECORD_IDS=($ID)	# multiple ids (RECORD_ID_1 RECORD_ID_n)
 
 IP=$(curl -s http://checkip.amazonaws.com/)

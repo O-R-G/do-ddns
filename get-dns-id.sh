@@ -1,7 +1,8 @@
 #!/bin/sh
 
-ACCESS_TOKEN=thistoken
-DOMAIN=this.com
+# requires environment vars set in .zshrc
+# export ACCESS_TOKEN=thistoken
+# export DOMAIN=this.com
 
 response=$(curl \
   --silent \
@@ -10,4 +11,5 @@ response=$(curl \
   -H "Authorization: Bearer $ACCESS_TOKEN" \
   "https://api.digitalocean.com/v2/domains/$DOMAIN/records")
 
-echo $response | grep -Eo '"id":\d*|"type":"\w*"|"data":".*?"'
+echo $response | grep -Eo '"id":\d*|"type":"\w*"|"data":".*?"|"name":".*?"'
+
