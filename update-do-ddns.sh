@@ -12,7 +12,7 @@ IP=$(curl -s http://checkip.amazonaws.com/)
 echo $(date)
 echo "Current Public IP : $IP"
 
-if [[ $(< do-ddns/ip.txt) != "$IP" ]]; then
+if [[ $(< $HOME/do-ddns/ip.txt) != "$IP" ]]; then
 	echo "Updating Digital Ocean DNS record ... "
 	for ID in "${RECORD_IDS[@]}"
 	do
@@ -24,7 +24,7 @@ if [[ $(< do-ddns/ip.txt) != "$IP" ]]; then
 		-d "{\"data\":\"$IP\"}" \
 		"https://api.digitalocean.com/v2/domains/$DOMAIN/records/$ID"
 	done
-	echo $IP > do-ddns/ip.txt
+	echo $IP > $HOME/do-ddns/ip.txt
 else
 	echo "Public IP unchanged. Exiting ... "
 fi
