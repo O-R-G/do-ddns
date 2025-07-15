@@ -111,7 +111,7 @@ cp update-do-ddns.sh /usr/local/bin/update-do-ddns
 ### 10. Set Local Computer to Stay Awake
 Run on startup:
 ```bash
-caffeinate
+caffeinate -d
 ```
 
 ---
