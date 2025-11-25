@@ -6,13 +6,17 @@
 # export ID=do_record_id
 
 RECORD_IDS=($ID)	# multiple ids (RECORD_ID_1 RECORD_ID_n)
-
 IP=$(curl -s http://checkip.amazonaws.com/)
+REMOTE_IP=$(	curl -s \
+  		-H "Authorization: Bearer $ACCESS_TOKEN" \
+  		"https://api.digitalocean.com/v2/domains/$DOMAIN/records/$ID" \
+  		| sed -n 's/.*"data":"\([^"]*\)".*/\1/p')
 
 echo $(date)
-echo "Current Public IP : $IP"
+echo "Current Local IP : $IP"
+echo "Current Remote IP : $REMOTE_IP"
 
-if [[ $(< $HOME/do-ddns/ip.txt) != "$IP" ]]; then
+if [[ "$REMOTE_IP" != "$IP" ]]; then
 	echo "Updating Digital Ocean DNS record ... "
 	for ID in "${RECORD_IDS[@]}"
 	do
@@ -26,7 +30,7 @@ if [[ $(< $HOME/do-ddns/ip.txt) != "$IP" ]]; then
 	done
 	echo $IP > $HOME/do-ddns/ip.txt
 else
-	echo "Public IP unchanged. Exiting ... "
+	echo "Local IP unchanged. Exiting ... "
 fi
 
 echo "** Done. **"
