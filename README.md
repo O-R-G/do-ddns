@@ -53,7 +53,7 @@ Use the `get-dns-id.sh` script:
 ### 5. Update DNS
 Add the DNS record ID and API token to .zshrc as enviroment variables then run `update-dns.sh`:
 ```bash
-nano ~/.zshrc
+nano Users/me/.zshrc
 ./update-dns.sh
 ```
 
